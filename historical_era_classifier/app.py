@@ -30,7 +30,8 @@ def load_classifier_model():
 @st.cache_resource
 def load_transcription_model():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    return PianoTranscription(device=device, checkpoint_path=None)
+    return PianoTranscription(device=device, checkpoint_path=None, auto_download=True)
+
 
 # Initialize models
 try:
