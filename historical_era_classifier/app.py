@@ -12,7 +12,7 @@ from audio_recorder_streamlit import audio_recorder
 
 from src.realtime_feature_extracter import extract_features_from_midi
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent
 MODEL_DIR = (PROJECT_ROOT / "models" / "model.pkl")
 
 # Page config
