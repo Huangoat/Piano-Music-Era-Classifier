@@ -12,3 +12,4 @@ pydub
 piano-transcription-inference
 audio-recorder-streamlit
 joblib
+ffmpeg-python
