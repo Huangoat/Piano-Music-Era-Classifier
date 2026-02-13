@@ -32,13 +32,13 @@ def load_transcription_model():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     checkpoint_path = PROJECT_ROOT / "src" / "piano_transcription_inference_data" / \
                       "note_F1=0.9677_pedal_F1=0.9186.pth"
-    return PianoTranscription(device=device, checkpoint_path=checkpoint_path, auto_download=True)
+    return PianoTranscription(device=device, checkpoint_path=checkpoint_path)
 
 
 # Initialize models
 try:
     classifier_model = load_classifier_model()
-    transcriptor = load_transcription_model()
+
 except Exception as e:
     st.error(f"Error loading models: {e}")
     st.stop()
@@ -56,6 +56,7 @@ st.write("Note: This model is optimized for **solo piano**. Orchestral music or 
 #Turning audio into midi 
 def transcode_audio_to_midi(audio_path):
     try:
+        transcriptor = load_transcription_model()
         audio_snippet = AudioSegment.from_file(audio_path)
         cut = 40 * 1000 
     
